@@ -1,0 +1,1652 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: "Arial", sans-serif;
+      background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzk0gaoMjaWkeGtYH3aoMnwZAasMio1tNVc9J966JfywaoKqrS");
+      background-size: cover;
+      background-position: center;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .page-heading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+    }
+
+    .heading{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      
+    }
+
+    .sub-heading{
+      display:flex;
+      flex-direction: column;
+      margin-left: 20px;
+    
+    }
+
+    .container {
+      width: 80%;
+      max-width: 1000px;
+      margin: 15px auto;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .container:hover {
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      color: #d9534f;
+      margin-bottom: 20px;
+      font-size: 2em;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      transition: margin-bottom 0.3s ease-in-out;
+    }
+    .form-group2 {
+      margin-bottom: 25px;
+      transition: margin-bottom 0.3s ease-in-out;
+    }
+
+    .label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.2em;
+      color: #333;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .checkbox-group,
+    .radio-group {
+      margin-top: 15px;
+    }
+
+    .checkbox-group input,
+    .radio-group input {
+      display: none;
+    }
+
+    .checkbox-group label,
+    .radio-group label {
+      display: inline-block;
+      padding: 12px 18px;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .checkbox-group label:hover,
+    .radio-group label:hover {
+      background-color: #e0e0e0;
+    }
+
+    .checkbox-group input:checked+label,
+    .radio-group input:checked+label {
+      background-color: #5bc0de;
+      color: #fff;
+    }
+
+    .radio-group label {
+      margin-right: 10px;
+    }
+
+    .radio-group input:checked+label {
+      border: 1px solid #5bc0de;
+    }
+
+    .select-wrapper {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .select-wrapper select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      width: 100%;
+      padding: 14px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      cursor: pointer;
+      transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    }
+
+    .select-wrapper:after {
+      content: "\25BC";
+      font-size: 1.5em;
+      color: #555;
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      pointer-events: none;
+      transform: translateY(-50%);
+      transition: color 0.3s ease-in-out;
+    }
+
+    .select-wrapper select:focus {
+      outline: none;
+      border-color: #d9534f;
+      background-color: #fff;
+    }
+
+    .input-wrapper input,
+    .input-wrapper textarea {
+      width: 100%;
+      padding: 14px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    }
+
+    .input-wrapper input:focus,
+    .input-wrapper textarea:focus {
+      outline: none;
+      border-color: #d9534f;
+      background-color: #fff;
+    }
+
+    .input-wrapper input:hover,
+    .input-wrapper textarea:hover {
+      background-color: #f5f5f5;
+    }
+
+    .input-wrapper input::placeholder,
+    .input-wrapper textarea::placeholder {
+      color: #bbb;
+      /* Adjust placeholder color */
+    }
+
+    /* Optional: Add a subtle border-bottom on hover for a more interactive feel */
+    .input-wrapper input:hover::before,
+    .input-wrapper textarea:hover::before {
+      content: "";
+      display: block;
+      border-bottom: 2px solid #d9534f;
+      transform: scaleX(0);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .input-wrapper input:hover::before,
+    .input-wrapper textarea:hover::before {
+      transform: scaleX(1);
+    }
+
+    /* Optional: Add a subtle transition for placeholder text */
+    .input-wrapper input::placeholder,
+    .input-wrapper textarea::placeholder {
+      transition: color 0.3s ease-in-out;
+    }
+
+    .input-wrapper input:hover::placeholder,
+    .input-wrapper textarea:hover::placeholder {
+      color: #888;
+    }
+
+    .button {
+      background-color: #d9534f;
+      color: #fff;
+      padding: 16px 32px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    }
+
+    .button:hover {
+      background-color: #5bc0de;
+      transform: scale(1.05);
+    }
+
+    /* New Styles */
+    .breadcrumb {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      font-size: 18px;
+      color: #555;
+    }
+
+    .breadcrumb li {
+      margin-right: 12px;
+      transition: color 0.3s ease-in-out;
+    }
+
+    .breadcrumb li:hover {
+      color: #d9534f;
+    }
+
+    /* Stylish Progress Bar */
+    .progress-container {
+      margin-bottom: 30px;
+    }
+
+    .progress-bar {
+      height: 10px;
+      background-color: #5bc0de;
+      width: 0;
+      border-radius: 5px;
+      /* Add rounded corners to the progress bar */
+      transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    }
+
+    /* Updated Stylish Progress Bar Styles */
+    .stylish-progress-bar {
+      position: relative;
+      height: 10px;
+      width: 0;
+      background-color: #f9f9f9;
+      /* Background color of the progress bar container */
+      border-radius: 5px;
+      /* Add rounded corners to the progress bar container */
+      overflow: hidden;
+    }
+
+    .stylish-progress-bar:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-image: linear-gradient(45deg,
+          #5bc0de,
+          #d9534f);
+      /* Gradient background for the progress bar */
+      transition: width 0.3s ease-in-out;
+    }
+
+    /* Stylish Progress Bar Animation */
+    .stylish-progress-bar.animate:before {
+      animation: progressAnimation 2s ease-in-out infinite;
+      /* Add animation for a stylish effect */
+    }
+
+    @keyframes progressAnimation {
+      0% {
+        width: 0;
+      }
+
+      100% {
+        width: 100%;
+      }
+    }
+
+    .form-section {
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    /* .hidden {
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  overflow: hidden;
+} */
+    @media screen and (max-width: 600px) {
+      .container {
+        width: 90%;
+        padding: 30px;
+        max-width: 600px;
+        
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .submit-btn {
+        margin-bottom: 10px;
+      }
+    }
+
+    .textarea-wrapper {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .textarea-wrapper textarea {
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    }
+
+    .textarea-wrapper textarea:focus {
+      outline: none;
+      border-color: #d9534f;
+      background-color: #fff;
+    }
+
+    /* Stylish Dropdown */
+    .select-stylish {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .select-stylish select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      width: 100%;
+      padding: 14px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      cursor: pointer;
+      transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    }
+
+    .select-stylish:after {
+      content: "\25BC";
+      font-size: 1.5em;
+      color: #555;
+      position: absolute;
+      top: 50%;
+      right: 15px;
+      pointer-events: none;
+      transform: translateY(-50%);
+      transition: color 0.3s ease-in-out;
+    }
+
+    .select-stylish select:focus {
+      outline: none;
+      border-color: #d9534f;
+      background-color: #fff;
+    }
+
+    .signature-section {
+      margin-top: 40px;
+      margin-bottom: 40px;
+      justify-content: space-between;
+    }
+
+    .initial-screening {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  /* width: calc(50% - 10px); 
+  box-sizing: border-box;
+  margin-bottom: 10px; */
+}
+
+.form-group {
+  width: calc(50% - 10px);
+  box-sizing: border-box;
+  margin-bottom: 10px; 
+}
+
+  
+
+  </style>
+  <title>Blood Donor Questionnaire and Consent Form</title>
+</head>
+
+<body>
+  <div class="page-heading">
+    <div class="heading">
+      <img src="https://i.ibb.co/gJsmWjM/Logo1.png" alt="Logo1" border="0" height="100px" width="100px" />
+      <div class="sub-heading">
+    <p>Lic No. : RAJ - 2852</p>
+    <h1 style="margin-top: -20px;">Blood Donor Questionnaire &amp; Consent Form</h1>
+      </div>
+    </div>
+    <div class="container">
+      <!-- Breadcrumb and Progress -->
+      <!--       <div class="progress-container">
+        <ul class="breadcrumb">
+          <li class="active">Personal Information</li>
+          <li>Female Donors</li>
+          <li>Self Exclusion Questionnaire</li>
+        </ul>
+        <div class="progress-bar stylish-progress-bar "></div>
+      </div> -->
+      <div class="form-group">
+        <label for="donorType">Donor Type:</label>
+        <div class="select-stylish">
+          <select id="donorType" name="donorType">
+            <option value="voluntary">Voluntary</option>
+            <option value="familyVoluntary">Family Voluntary</option>
+            <option value="replacement">Replacement</option>
+          </select>
+        </div>
+        <small>Note: Please choose the appropriate donor type.</small>
+      </div>
+      <p>Please answer the following questions correctly. This will help to protect you and the patient who receives your blood or blood products.</p>
+    </div>
+
+    <form id="donorForm" class="container" onsubmit="submitForm(); sendEmail(); reset(); return false" name="submit-to-google-sheet">
+      <section id="section1" class="form-section">
+
+        <h2>Personal Details</h2>
+<div class="initial-screening">
+        <div class="form-group">
+          <label for="donorName"> Name of Donor (capital):</label>
+          <div class="input-wrapper"><input type="text" id="donorName" name="donorName" required></div>
+        </div>
+
+        <div class="form-group">
+          <label for="age"> Age:</label>
+          <div class="input-wrapper"><input type="number" id="age" name="age"></div>
+        </div>
+
+        
+
+        <div class="form-group">
+          <label for="occupation"> Occupation:</label>
+          <div class="input-wrapper"><input type="text" id="occupation" name="occupation"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="fatherHusbandName"> Father's / Husband's Name:</label>
+          <div class="input-wrapper"><input type="text" id="fatherHusbandName" name="fatherHusbandName"></div>
+        </div>
+</div>
+<div class="form-group">
+  <label> Gender:</label>
+  <div class="radio-group radio-stylish"> <input type="radio" id="male" name="gender" value="Male">
+    <label for="male">Male</label>
+
+    <input type="radio" id="female" name="gender" value="Female">
+    <label for="female">Female</label>
+  </div>
+
+</div>
+<div class="initial-screening">
+        <div class="form-group">
+          <label for="communicationAddress"> Address for Communication:</label>
+          <div class="textarea-wrapper">
+            <textarea id="communicationAddress" name="communicationAddress" rows="4"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="permanentAddress"> Permanent Address:</label>
+          <div class="textarea-wrapper">
+            <textarea id="permanentAddress" name="permanentAddress" rows="4"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="bloodGroup"> Blood Group:</label>
+          <div class="input-wrapper"><input type="text" id="bloodGroup" name="bloodGroup"></div>
+        </div>
+        <div class="form-group">
+          <label for="donorId"> Donor ID:</label>
+          <div class="input-wrapper"><input type="text" id="donorId" name="donorId"></div>
+        </div>
+        <div class="form-group">
+          <label for="bloodBankSerialNo"> Blood Bank Serial No:</label>
+          <div class="input-wrapper"><input type="text" id="bloodBankSerialNo" name="bloodBankSerialNo"></div>
+        </div>
+        <div class="form-group">
+          <label for="bloodBankType"> Blood Bank Type:</label>
+          <div class="input-wrapper"><input type="text" id="bloodBankType" name="bloodBankType"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="telNo"> Tel. No.:</label>
+          <div class="input-wrapper"><input type="tel" id="telNo" name="telNo"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="mobileNo"> Mobile No.:</label>
+          <div class="input-wrapper"><input type="tel" id="mobileNo" name="mobileNo"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="email"> Email:</label>
+          <div class="input-wrapper"><input type="email" id="email" name="email" required></div>
+        </div>
+        </div>
+        
+        <div id="voluntaryQuestions" class="hidden"><div class="initial-screening">
+          <div class="form-group">
+            <label for="patientName"> Patient's Name:</label>
+            <div class="input-wrapper"><input type="text" id="patientName" name="patientName"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="ipNo"> IP No.:</label>
+            <div class="input-wrapper"><input type="text" id="ipNo" name="ipNo"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="relationship"> Relationship with patient:</label>
+            <div class="input-wrapper"><input type="text" id="relationship" name="relationship"></div>
+          </div></div>
+        </div>
+<div class="initial-screening">
+        <div class="form-group">
+          <label> Have you donated blood plasma previously?</label>
+          <div class="radio-group radio-stylish">
+
+            <input type="radio" id="plasmaYes" name="plasmaDonation" value="yes">
+            <label for="plasmaYes">Yes</label>
+
+            <input type="radio" id="plasmaNo" name="plasmaDonation" value="no">
+            <label for="plasmaNo">No</label>
+          </div>
+
+          <label for="plasmaDonationTimes" id="plasmaDonationTimesLabel" style="display: none;">(If yes, how many times?):</label>
+          <div class="input-wrapper"><input type="number" id="plasmaDonationTimes" name="plasmaDonationTimes" style="display: none;"></div>
+        </div>
+        </div>
+
+        <div class="initial-screening">
+        <div class="form-group">
+          <label for="lastDonationDate"> Date of last Blood / Platelet / Plasma donation:</label>
+          <input type="date" id="lastDonationDate" name="lastDonationDate">
+        </div>
+
+        <div class="form-group">
+          <label for="donationDate"> Date of donation:</label>
+          <input type="date" id="donationDate" name="donationDate">
+        </div>
+</div>
+        <h2>Initial Screening</h2>
+<div class="initial-screening">
+        <div class="form-group">
+          <label for="weight"> Weight (kg):</label>
+          <div class="input-wrapper"><input type="number" id="weight" name="weight"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="height"> Height (cm):</label>
+          <div class="input-wrapper"><input type="number" id="height" name="height"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="pulse"> Pulse (per min):</label>
+          <div class="input-wrapper"><input type="number" id="pulse" name="pulse"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="temperature"> Temperature:</label>
+          <div class="input-wrapper"><input type="text" id="temperature" name="temperature"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="bp"> BP (mmHg):</label>
+          <div class="input-wrapper"><input type="text" id="bp" name="bp"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="spo2"> SpO2:</label>
+          <div class="input-wrapper"><input type="number" id="spo2" name="spo2"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="hb"> Hb (gm):</label>
+          <div class="input-wrapper"><input type="number" id="hb" name="hb"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="het"> Het:</label>
+          <div class="input-wrapper"><input type="text" id="het" name="het"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="pltCount"> Plt Count (10°/uL):</label>
+          <div class="input-wrapper"><input type="number" id="pltCount" name="pltCount"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="wbcCount"> WBC Count:</label>
+          <div class="input-wrapper"><input type="number" id="wbcCount" name="wbcCount"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="hbsAg"> HBsAg:</label>
+          <div class="input-wrapper"><input type="text" id="hbsAg" name="hbsAg"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="antiHiv"> Anti HIV:</label>
+          <div class="input-wrapper"><input type="text" id="antiHiv" name="antiHiv"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="antiHcv"> Anti HCV:</label>
+          <div class="input-wrapper"><input type="text" id="antiHcv" name="antiHcv"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="syphillis"> Syphilis:</label>
+          <div class="input-wrapper"><input type="text" id="syphillis" name="syphillis"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="mp"> MP:</label>
+          <div class="input-wrapper"><input type="text" id="mp" name="mp"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="natTest"> NAT Test:</label>
+          <div class="input-wrapper"><input type="text" id="natTest" name="natTest"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="sProtein"> S.Protein:</label>
+          <div class="input-wrapper"><input type="text" id="sProtein" name="sProtein"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="sarsCov2lgGTitre"> SARS-Cov-2 IgG Titre:</label>
+          <div class="input-wrapper"><input type="text" id="sarsCov2lgGTitre" name="sarsCov2lgGTitre"></div>
+        </div>
+</div>
+
+        <div class="form-group">
+          <label for="covidSymptomOnset"> Date of COVID-19 Symptom onset:</label>
+          <input type="date" id="covidSymptomOnset" name="covidSymptomOnset">
+        </div>
+
+        <div class="form-group">
+          <label for="covidSymptomCessation"> Date of COVID-19 Symptom Cessation:</label>
+          <input type="date" id="covidSymptomCessation" name="covidSymptomCessation">
+        </div>
+
+        <div class="form-group">
+          <label for="covidDiagnosisDate"> Date of COVID-19 diagnosis (by RT PCR):</label>
+          <input type="date" id="covidDiagnosisDate" name="covidDiagnosisDate">
+        </div>
+
+        <div class="form-group">
+          <label for="covidNegativeDate"> Date of COVID-19 Negative (RT PCR):</label>
+          <input type="date" id="covidNegativeDate" name="covidNegativeDate">
+        </div>
+        <div class="initial-screening">
+        <div class="form-group">
+          <label> Clinical diagnosis (COVID-19):</label>
+          <div class="radio-group radio-stylish">
+
+            <input type="radio" id="clinicalMild" name="clinicalDiagnosis" value="mild">
+
+            <label for="clinicalMild">Mild</label>
+
+            <input type="radio" id="clinicalModerate" name="clinicalDiagnosis" value="moderate">
+            <label for="clinicalModerate">Moderate</label>
+
+            <input type="radio" id="clinicalSevere" name="clinicalDiagnosis" value="severe">
+            <label for="clinicalSevere">Severe</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Treatment received for COVID-19:</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="treatmentYes" name="treatmentReceived" value="yes">
+            <label for="treatmentYes">Yes</label>
+
+            <input type="radio" id="treatmentNo" name="treatmentReceived" value="no">
+            <label for="treatmentNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Steroids:</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="steroidsYes" name="steroids" value="yes">
+            <label for="steroidsYes">Yes</label>
+
+            <input type="radio" id="steroidsNo" name="steroids" value="no">
+            <label for="steroidsNo">No</label>
+          </div>
+        </div>
+
+        <!-- Continue for questions 41 to 52 -->
+
+        <div class="form-group">
+          <label> Have you donated blood within 3 months (for male) or 4 months (for female) or SDP within 48 hours?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="bloodDonationYes" name="bloodDonationWithin3Months" value="yes">
+            <label for="bloodDonationYes">Yes</label>
+
+            <input type="radio" id="bloodDonationNo" name="bloodDonationWithin3Months" value="no">
+            <label for="bloodDonationNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Did you experience any ailment difficulty or discomfort during previous donations?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="previousDonationDifficultyYes" name="previousDonationDifficulty" value="yes">
+            <label for="previousDonationDifficultyYes">Yes</label>
+
+            <input type="radio" id="previousDonationDifficultyNo" name="previousDonationDifficulty" value="no">
+            <label for="previousDonationDifficultyNo">No</label>
+          </div>
+          <div class="form-group" id="previousDonationDifficultyYesDetails" style="display: none;">
+            <label for="previousDonationDifficultyDetails">If yes, what was the difficulty?</label>
+            <div class="textarea-wrapper">
+              <textarea id="previousDonationDifficultyDetails" name="previousDonationDifficultyDetails"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Are you feeling well today?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="feelingWellYes" name="feelingWell" value="yes">
+            <label for="feelingWellYes">Yes</label>
+
+            <input type="radio" id="feelingWellNo" name="feelingWell" value="no">
+            <label for="feelingWellNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group"><label> Have you eaten anything in the last 4 hours?</label>
+        <div class="radio-group radio-stylish">
+          <input type="radio" id="eatenYes" name="eatenLast4Hours" value="yes">
+          <label for="eatenYes">Yes</label>
+
+          <input type="radio" id="eatenNo" name="eatenLast4Hours" value="no">
+          <label for="eatenNo">No</label>
+        </div></div>
+        
+
+        <div class="form-group">
+          <label> Did you sleep well last night?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="sleptWellYes" name="sleptWellLastNight" value="yes">
+            <label for="sleptWellYes">Yes</label>
+
+            <input type="radio" id="sleptWellNo" name="sleptWellLastNight" value="no">
+            <label for="sleptWellNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Have you been refused as a blood donor, or told not to donate?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="refusedYes" name="refusedBloodDonor" value="yes">
+            <label for="refusedYes">Yes</label>
+
+            <input type="radio" id="refusedNo" name="refusedBloodDonor" value="no">
+            <label for="refusedNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Will you drive public transport, heavy-duty vehicles, piloting, skydiving, deep-sea diving, mountaineering, or work with machinery after blood donation?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="driveAfterDonationYes" name="driveAfterDonation" value="yes">
+            <label for="driveAfterDonationYes">Yes</label>
+
+            <input type="radio" id="driveAfterDonationNo" name="driveAfterDonation" value="no">
+            <label for="driveAfterDonationNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Do you have any reason to believe that you may be infected by Hepatitis/Malaria/HIV/AIDS/venereal disease?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="infectedReasonYes" name="infectedReason" value="yes">
+            <label for="infectedReasonYes">Yes</label>
+
+            <input type="radio" id="infectedReasonNo" name="infectedReason" value="no">
+            <label for="infectedReasonNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Are you suffering from Common cold, Cough, Sinusitis, Fever?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="sufferingFromIllnessYes" name="sufferingFromIllness" value="yes">
+            <label for="sufferingFromIllnessYes">Yes</label>
+
+            <input type="radio" id="sufferingFromIllnessNo" name="sufferingFromIllness" value="no">
+            <label for="sufferingFromIllnessNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Have you taken antibiotics in the last 14 days?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="antibioticsYes" name="antibioticsLast14Days" value="yes">
+            <label for="antibioticsYes">Yes</label>
+
+            <input type="radio" id="antibioticsNo" name="antibioticsLast14Days" value="no">
+            <label for="antibioticsNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Have you read the educational material and had your question answered?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="readMaterialYes" name="readMaterial" value="yes">
+            <label for="readMaterialYes">Yes</label>
+
+            <input type="radio" id="readMaterialNo" name="readMaterial" value="no">
+            <label for="readMaterialNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Have you taken alcohol in the past 24 hours?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="alcoholYes" name="alcoholLast24Hours" value="yes">
+            <label for="alcoholYes">Yes</label>
+
+            <input type="radio" id="alcoholNo" name="alcoholLast24Hours" value="no">
+            <label for="alcoholNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Do you suffer from migraine frequently?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="migraineYes" name="migraine" value="yes">
+            <label for="migraineYes">Yes</label>
+
+            <input type="radio" id="migraineNo" name="migraine" value="no">
+            <label for="migraineNo">No</label>
+          </div>
+          <div id="migraineDetails" style="display: none;">
+            <label> If yes, is it less than 1 week?</label>
+            <div class="radio-group radio-stylish">
+              <input type="radio" id="migraineLessThanOneWeekYes" name="migraineDuration" value="yes">
+              <label for="migraineLessThanOneWeekYes">Yes</label>
+
+              <input type="radio" id="migraineLessThanOneWeekNo" name="migraineDuration" value="no">
+              <label for="migraineLessThanOneWeekNo">No</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Are you taking or have taken any of these in the past 72 hours?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="medicationYes" name="medication" value="yes">
+            <label for="medicationYes">Yes</label>
+
+            <input type="radio" id="medicationNo" name="medication" value="no">
+            <label for="medicationNo">No</label>
+          </div>
+          <label for="medicationDetails" id="medicationDetailsLabel" style="display: none;">Specify the medication details:</label>
+          <div class="textarea-wrapper">
+            <textarea id="medicationDetails" name="medicationDetails" style="display: none;"></textarea>
+          </div>
+        </div>
+        </div>
+
+        <div class="form-group2">
+          <label> In the last 2 weeks, have you been vaccinated/immunized for any of the following?</label>
+          <div class="checkbox-group ">
+            <input type="checkbox" id="hepatitisB" name="vaccinations" value="hepatitisB">
+            <label for="hepatitisB">Hepatitis B</label>
+
+            <input type="checkbox" id="cholera" name="vaccinations" value="cholera">
+            <label for="cholera">Cholera</label>
+
+            <input type="checkbox" id="polio" name="vaccinations" value="polio">
+            <label for="polio">Polio</label>
+
+            <input type="checkbox" id="typhoid" name="vaccinations" value="typhoid">
+            <label for="typhoid">Typhoid</label>
+
+            <input type="checkbox" id="pertussis" name="vaccinations" value="pertussis">
+            <label for="pertussis">Pertussis</label>
+
+            <input type="checkbox" id="plague" name="vaccinations" value="plague">
+            <label for="plague">Plague</label>
+
+            <input type="checkbox" id="pneumococcal" name="vaccinations" value="pneumococcal">
+            <label for="pneumococcal">Pneumococcal</label>
+
+            <input type="checkbox" id="tetanus" name="vaccinations" value="tetanus">
+            <label for="tetanus">Tetanus</label>
+
+            <input type="checkbox" id="meningococcal" name="vaccinations" value="meningococcal">
+            <label for="meningococcal">Meningococcal</label>
+
+            <input type="checkbox" id="papillomaVirus" name="vaccinations" value="papillomaVirus">
+            <label for="papillomaVirus">Papilloma Virus</label>
+
+            <input type="checkbox" id="rabiesProphylaxis" name="vaccinations" value="rabiesProphylaxis">
+            <label for="rabiesProphylaxis">Rabies Prophylaxis</label>
+
+            <input type="checkbox" id="diphtheria" name="vaccinations" value="diphtheria">
+            <label for="diphtheria">Diphtheria</label>
+          </div>
+        </div>
+
+        <div class="form-group2">
+          <label> In the last 2 weeks, did you suffer from any of the following diseases?</label>
+          <div class="checkbox-group ">
+            <input type="checkbox" id="chickenPox" name="recentDiseases" value="chickenPox">
+            <label for="chickenPox">Chicken Pox</label>
+
+            <input type="checkbox" id="measles" name="recentDiseases" value="measles">
+            <label for="measles">Measles</label>
+
+            <input type="checkbox" id="mumps" name="recentDiseases" value="mumps">
+            <label for="mumps">Mumps</label>
+
+            <input type="checkbox" id="diarrhea" name="recentDiseases" value="diarrhea">
+            <label for="diarrhea">Diarrhea</label>
+
+            <input type="checkbox" id="cystitis" name="recentDiseases" value="cystitis">
+            <label for="cystitis">Cystitis/Urinary Tract Infection</label>
+          </div>
+        </div>
+
+        <div class="form-group2">
+          <label> In the last 4 weeks, have you taken any of the following vaccine/serum?</label>
+          <div class="checkbox-group ">
+            <input type="checkbox" id="liveVaccine" name="vaccineSerum" value="liveVaccine">
+            <label for="liveVaccine">Live attenuated vaccine like Polio, Measles, Mumps, Yellow fever, Japanese encephalitis, Influenza, Typhoid, Cholera, Hepatitis A</label>
+
+            <input type="checkbox" id="antiTetanusSerum" name="vaccineSerum" value="antiTetanusSerum">
+            <label for="antiTetanusSerum">Anti-tetanus serum</label>
+
+            <input type="checkbox" id="antiVenomSerum" name="vaccineSerum" value="antiVenomSerum">
+            <label for="antiVenomSerum">Anti-venom serum</label>
+
+            <input type="checkbox" id="antiDiptheriaSerum" name="vaccineSerum" value="antiDiptheriaSerum">
+            <label for="antiDiptheriaSerum">Anti-diptheria serum</label>
+
+            <input type="checkbox" id="antiGasGangreneSerum" name="vaccineSerum" value="antiGasGangreneSerum">
+            <label for="antiGasGangreneSerum">Anti-gas gangrene serum</label>
+          </div>
+        </div>
+
+        <div class="form-group2">
+          <label> In the last 3 months, have you had any history of Malaria?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="malariaYes" name="malariaHistory" value="yes">
+            <label for="malariaYes">Yes</label>
+
+            <input type="radio" id="malariaNo" name="malariaHistory" value="no">
+            <label for="malariaNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group2">
+          <label> In the last 4 months, did you suffer from Zika/West Nile infection or visited areas endemic for these infections?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="zikaWestNileYes" name="zikaWestNileHistory" value="yes">
+            <label for="zikaWestNileYes">Yes</label>
+
+            <input type="radio" id="zikaWestNileNo" name="zikaWestNileHistory" value="no">
+            <label for="zikaWestNileNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group2">
+          <label> In the last 6 months, have you had a history of any of the following?</label>
+          <div class="checkbox-group ">
+            <input type="checkbox" id="unexplainedWeightLoss" name="recentHistory" value="unexplainedWeightLoss">
+            <label for="unexplainedWeightLoss">Unexplained weight loss</label>
+
+            <input type="checkbox" id="repeatedDiarrhea" name="recentHistory" value="repeatedDiarrhea">
+            <label for="repeatedDiarrhea">Repeated diarrhea</label>
+
+            <input type="checkbox" id="dengueChikungunya" name="recentHistory" value="dengueChikungunya">
+            <label for="dengueChikungunya">Dengue/Chikungunya</label>
+
+            <input type="checkbox" id="minorDentalSurgery" name="recentHistory" value="minorDentalSurgery">
+            <label for="minorDentalSurgery">Minor/Dental surgery</label>
+
+            <input type="checkbox" id="accidentalNeedlePrick" name="recentHistory" value="accidentalNeedlePrick">
+            <label for="accidentalNeedlePrick">Accidental needle prick</label>
+
+            <input type="checkbox" id="continuousFever" name="recentHistory" value="continuousFever">
+            <label for="continuousFever">Continuous fever</label>
+
+            <input type="checkbox" id="swollenGlands" name="recentHistory" value="swollenGlands">
+            <label for="swollenGlands">Swollen glands</label>
+
+            <input type="checkbox" id="peripheralStemCells" name="recentHistory" value="peripheralStemCells">
+            <label for="peripheralStemCells">Peripheral stem cells</label>
+
+            <input type="checkbox" id="acuteKidneyInfection" name="recentHistory" value="acuteKidneyInfection">
+            <label for="acuteKidneyInfection">Acute kidney infection</label>
+          </div>
+        </div>
+
+        <div class="form-group2">
+          <label> In the last 1 year, have you had any history of the following?</label>
+          <div class="checkbox-group ">
+            <input type="checkbox" id="hepatitisBCHistory" name="hepatitisBCHistory" value="yes">
+            <label for="hepatitisBCHistory">Yourself/Spouse/Partner had hepatitis B/C & or Blood Transformation</label>
+
+            <input type="checkbox" id="majorSurgery" name="majorSurgery" value="yes">
+            <label for="majorSurgery">Major surgery</label>
+
+            <input type="checkbox" id="typhoidImmunization" name="typhoidImmunization" value="yes">
+            <label for="typhoidImmunization">Typhoid Immunoglobulin & Hepatitis B Immunoglobulin</label>
+
+            <input type="checkbox" id="rabiesVaccineBite" name="rabiesVaccineBite" value="yes">
+            <label for="rabiesVaccineBite">Rabies vaccine bite</label>
+
+            <input type="checkbox" id="hepatitisAE" name="hepatitisAE" value="yes">
+            <label for="hepatitisAE">Hepatitis A/E</label>
+
+            <input type="checkbox" id="inmateOfJail" name="inmateOfJail" value="yes">
+            <label for="inmateOfJail">Inmate of jail or any other confinement</label>
+
+            <input type="checkbox" id="boneOrSkinGraft" name="boneOrSkinGraft" value="yes">
+            <label for="boneOrSkinGraft">Bone or skin graft</label>
+
+            <input type="checkbox" id="organTissueDonation" name="organTissueDonation" value="yes">
+            <label for="organTissueDonation">Organ/Tissue donation</label>
+
+            <input type="checkbox" id="giEndoscopy" name="giEndoscopy" value="yes">
+            <label for="giEndoscopy">GI Endoscopy</label>
+
+            <input type="checkbox" id="bodyPiercing" name="bodyPiercing" value="yes">
+            <label for="bodyPiercing">Body piercing</label>
+
+            <input type="checkbox" id="tattooing" name="tattooing" value="yes">
+            <label for="tattooing">Tattooing</label>
+          </div>
+        </div>
+
+        <div class="form-group2">
+          <label> In the last 2 years, have you had any history of the following?</label>
+          <div class="checkbox-group ">
+            <input type="checkbox" id="tuberculosisHistory" name="tuberculosisHistory" value="yes">
+            <label for="tuberculosisHistory">Tuberculosis</label>
+
+            <input type="checkbox" id="osteomyelitis" name="osteomyelitis" value="yes">
+            <label for="osteomyelitis">Osteomyelitis</label>
+          </div>
+        </div>
+
+        <div class="form-group2">
+          <label> Do you suffer from or have suffered from any of the following diseases?</label>
+          <div class="checkbox-group ">
+            <input type="checkbox" id="heartDisease" name="medicalHistory" value="heartDisease">
+            <label for="heartDisease">Heart Disease</label>
+
+            <input type="checkbox" id="kidneyDisease" name="medicalHistory" value="kidneyDisease">
+            <label for="kidneyDisease">Kidney Disease</label>
+
+            <input type="checkbox" id="epilepsy" name="medicalHistory" value="epilepsy">
+            <label for="epilepsy">Epilepsy</label>
+
+            <input type="checkbox" id="cancer" name="medicalHistory" value="cancer">
+            <label for="cancer">Cancer/Malignant Disease</label>
+
+            <input type="checkbox" id="diabetes" name="medicalHistory" value="diabetes">
+            <label for="diabetes">Diabetes</label>
+
+            <input type="checkbox" id="tuberculosis" name="medicalHistory" value="tuberculosis">
+            <label for="tuberculosis">Tuberculosis</label>
+
+            <input type="checkbox" id="hepatitis" name="medicalHistory" value="hepatitis">
+            <label for="hepatitis">Hepatitis B/C</label>
+
+            <input type="checkbox" id="bleedingTendency" name="medicalHistory" value="bleedingTendency">
+            <label for="bleedingTendency">Abnormal bleeding tendency</label>
+
+            <input type="checkbox" id="jaundice" name="medicalHistory" value="jaundice">
+            <label for="jaundice">Jaundice</label>
+
+            <input type="checkbox" id="allergicDisease" name="medicalHistory" value="allergicDisease">
+            <label for="allergicDisease">Severe allergic Disease</label>
+
+            <input type="checkbox" id="convulsion" name="medicalHistory" value="convulsion">
+            <label for="convulsion">Convulsion</label>
+
+            <input type="checkbox" id="thyroidDisorder" name="medicalHistory" value="thyroidDisorder">
+            <label for="thyroidDisorder">Thyroid/other endocrine disorder</label>
+
+            <input type="checkbox" id="liverDisease" name="medicalHistory" value="liverDisease">
+            <label for="liverDisease">Chronic liver Disease/ liver fall</label>
+
+            <input type="checkbox" id="asthmaOnSteroid" name="medicalHistory" value="asthmaOnSteroid">
+            <label for="asthmaOnSteroid">Asthma on Steroid</label>
+
+            <input type="checkbox" id="lungDisease" name="medicalHistory" value="lungDisease">
+            <label for="lungDisease">Lung Disease</label>
+
+            <input type="checkbox" id="leprosy" name="medicalHistory" value="leprosy">
+            <label for="leprosy">Leprosy</label>
+
+            <input type="checkbox" id="std" name="medicalHistory" value="std">
+            <label for="std">Sexually Transmitted Disease</label>
+
+            <input type="checkbox" id="psychiatricDisorder" name="medicalHistory" value="psychiatricDisorder">
+            <label for="psychiatricDisorder">Psychiatric disorder</label>
+
+            <input type="checkbox" id="kalaAzar" name="medicalHistory" value="kalaAzar">
+            <label for="kalaAzar">Kala-azar</label>
+
+            <input type="checkbox" id="stomachUlcer" name="medicalHistory" value="stomachUlcer">
+            <label for="stomachUlcer">Stomach ulcer</label>
+
+            <input type="checkbox" id="autoimmuneDisorder" name="medicalHistory" value="autoimmuneDisorder">
+            <label for="autoimmuneDisorder">Autoimmune disorder</label>
+
+            <input type="checkbox" id="hemolyticAnemia" name="medicalHistory" value="hemolyticAnemia">
+            <label for="hemolyticAnemia">Hemolytic anemia</label>
+
+            <input type="checkbox" id="organStemCells" name="medicalHistory" value="organStemCells">
+            <label for="organStemCells">Recipient or donor of organ/stem cells</label>
+          </div>
+        </div>
+        
+        <!--         <button class="next-btn button" onclick="nextSection">Next</button> -->
+      </section>
+      <!-- Section 2: Female Donors -->
+      <section id="section2" class="form-section hidden">
+        <h2>Female Donors</h2>
+<div class="initial-screening">
+        <div class="form-group">
+          <label> Are you pregnant?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="pregnantYes" name="pregnant" value="yes">
+            <label for="pregnantYes">Yes</label>
+
+            <input type="radio" id="pregnantNo" name="pregnant" value="no">
+            <label for="pregnantNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Do you have a child less than one year old?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="childLessThanOneYes" name="childLessThanOne" value="yes">
+            <label for="childLessThanOneYes">Yes</label>
+
+            <input type="radio" id="childLessThanOneNo" name="childLessThanOne" value="no">
+            <label for="childLessThanOneNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Is your child on breast-feeding?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="breastfeedingYes" name="breastfeeding" value="yes">
+            <label for="breastfeedingYes">Yes</label>
+
+            <input type="radio" id="breastfeedingNo" name="breastfeeding" value="no">
+            <label for="breastfeedingNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Are you having your periods today?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="periodsYes" name="periodsToday" value="yes">
+            <label for="periodsYes">Yes</label>
+
+            <input type="radio" id="periodsNo" name="periodsToday" value="no">
+            <label for="periodsNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Are you having your periods today?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="secondPeriodsYes" name="secondPeriodsToday" value="yes">
+            <label for="secondPeriodsYes">Yes</label>
+
+            <input type="radio" id="secondPeriodsNo" name="secondPeriodsToday" value="no">
+            <label for="secondPeriodsNo">No</label>
+          </div>
+        </div>
+        </div>
+        <!--         <button class="prev-btn button" onclick="prevSection">Back</button>
+        <button class="next-btn button" onclick="nextSection">Next</button> -->
+      </section>
+      <!-- Section 3: Risk Behavior Questions -->
+      <section id="section3" class="form-section hidden">
+        <h2>SELF EXCLUSION QUESTIONNAIRE (RISK BEHAVIOUR)</h2>
+<div class="initial-screening">
+        <div class="form-group">
+          <label> Do you practice Safe Sex?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="safeSexYes" name="safeSex" value="yes">
+            <label for="safeSexYes">Yes</label>
+
+            <input type="radio" id="safeSexNo" name="safeSex" value="no">
+            <label for="safeSexNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Are you HIV Positive or do you think you may be HIV Positive?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="hivPositiveYes" name="hivPositive" value="yes">
+            <label for="hivPositiveYes">Yes</label>
+
+            <input type="radio" id="hivPositiveNo" name="hivPositive" value="no">
+            <label for="hivPositiveNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Is your reason for donating blood to undergo an HIV test?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="hivTestReasonYes" name="hivTestReason" value="yes">
+            <label for="hivTestReasonYes">Yes</label>
+
+            <input type="radio" id="hivTestReasonNo" name="hivTestReason" value="no">
+            <label for="hivTestReasonNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>IN PAST 6 MONTHS</label>
+          <label> Have you had sexual activity by paying money or vice versa?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="sexualActivityMoneyYes" name="sexualActivityMoney" value="yes">
+            <label for="sexualActivityMoneyYes">Yes</label>
+
+            <input type="radio" id="sexualActivityMoneyNo" name="sexualActivityMoney" value="no">
+            <label for="sexualActivityMoneyNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Have you had sex with multiple partners?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="sexWithMultiplePartnersYes" name="sexWithMultiplePartners" value="yes">
+            <label for="sexWithMultiplePartnersYes">Yes</label>
+
+            <input type="radio" id="sexWithMultiplePartnersNo" name="sexWithMultiplePartners" value="no">
+            <label for="sexWithMultiplePartnersNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Victim of sexual assault?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="victimOfSexualAssaultYes" name="victimOfSexualAssault" value="yes">
+            <label for="victimOfSexualAssaultYes">Yes</label>
+
+            <input type="radio" id="victimOfSexualAssaultNo" name="victimOfSexualAssault" value="no">
+            <label for="victimOfSexualAssaultNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Sex with someone whose background you do not know?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="sexWithUnknownBackgroundYes" name="sexWithUnknownBackground" value="yes">
+            <label for="sexWithUnknownBackgroundYes">Yes</label>
+
+            <input type="radio" id="sexWithUnknownBackgroundNo" name="sexWithUnknownBackground" value="no">
+            <label for="sexWithUnknownBackgroundNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>IN PAST 12 MONTHS</label>
+          <label> Have you suffered from sexually Transmitted disease?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="stdSufferedYes" name="stdSuffered" value="yes">
+            <label for="stdSufferedYes">Yes</label>
+
+            <input type="radio" id="stdSufferedNo" name="stdSuffered" value="no">
+            <label for="stdSufferedNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Have you ever injected yourself with drugs not prescribed by Doctor?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="injectedDrugsYes" name="injectedDrugs" value="yes">
+            <label for="injectedDrugsYes">Yes</label>
+
+            <input type="radio" id="injectedDrugsNo" name="injectedDrugs" value="no">
+            <label for="injectedDrugsNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Do you think any of the above questions may be true for your sex partner?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="partnerQuestionsTrueYes" name="partnerQuestionsTrue" value="yes">
+            <label for="partnerQuestionsTrueYes">Yes</label>
+
+            <input type="radio" id="partnerQuestionsTrueNo" name="partnerQuestionsTrue" value="no">
+            <label for="partnerQuestionsTrueNo">No</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label> Do you consider your blood safe for transfusion to a patient?</label>
+          <div class="radio-group radio-stylish">
+            <input type="radio" id="bloodSafeYes" name="bloodSafe" value="yes">
+            <label for="bloodSafeYes">Yes</label>
+
+            <input type="radio" id="bloodSafeNo" name="bloodSafe" value="no">
+            <label for="bloodSafeNo">No</label>
+          </div>
+        </div>
+</div>
+        <!-- NOTE -->
+        <div class="note-section">
+          <h2>NOTE:</h2>
+          <p>
+            If you are in doubt as to whether or not you should donate blood, please discuss with the staff member.
+            Alternatively, you must leave the blood Centre without any obligation, or you may inform us within 6 hours after donation
+            not to be used if you feel that your blood might not be safe.
+          </p>
+          <h2>IMPORTANT:</h2>
+          <p>
+            • Don't donate blood if you may have been exposed to HIV/Hepatitis B&C.
+          </p>
+          <p>• Kindly answer the questions truthfully.</p>
+        </div>
+
+        <!-- Signatures -->
+        <div class="signature-section">
+          <div class="form-group">
+            <label for="staffName">Name of Staff (Screening the Donor):</label>
+            <!--             <div class="input-wrapper"><input type="text" id="staffName" name="staffName"></div> -->
+
+          </div>
+          <div class="form-group">
+            <label for="staffSignature">Staff Signature:</label>
+            <!--             <div class="input-wrapper"><input type="text" id="staffSignature" name="staffSignature"></div> -->
+          </div>
+          <div class="form-group">
+            <label for="medicalOfficerSignature">Medical Officer Signature:</label>
+            <!--             <div class="input-wrapper"><input type="text" id="medicalOfficerSignature" name="medicalOfficerSignature"></div> -->
+          </div>
+
+          <div class="form-group">
+            <label for="donorSignature">Signature of Donor:</label>
+            <!--             <div class="input-wrapper"><input type="text" id="donorSignature" name="donorSignature"></div> -->
+          </div>
+        </div>
+
+        <div class="btn-section">
+          <!--         <button class="prev-btn button" onclick="prevSection">Back</button> -->
+          <button class="submit-btn button" onclick="submitFor(); sendEmail();" type="submit" name="submit">Submit</button>
+          <button class="submit-btn button" onclick="printForm();">Print</button>
+        </div>
+
+      </section>
+    </form>
+    <script src=" https://smtpjs.com/v3/smtp.js"></script>
+    <script>
+      function togglePlasmaDonationTimes() {
+        var plasmaYesRadio = document.getElementById("plasmaYes");
+        var plasmaDonationTimesLabel = document.getElementById(
+          "plasmaDonationTimesLabel"
+        );
+        var plasmaDonationTimesInput = document.getElementById("plasmaDonationTimes");
+        if (plasmaYesRadio.checked) {
+          plasmaDonationTimesLabel.style.display = "inline";
+          plasmaDonationTimesInput.style.display = "inline";
+        } else {
+          plasmaDonationTimesLabel.style.display = "none";
+          plasmaDonationTimesInput.style.display = "none";
+        }
+      }
+
+      function togglePreviousDonationDifficultyDetails() {
+        var previousDonationDifficultyYesRadio = document.getElementById(
+          "previousDonationDifficultyYes"
+        );
+        var previousDonationDifficultyYesDetails = document.getElementById(
+          "previousDonationDifficultyYesDetails"
+        );
+        if (previousDonationDifficultyYesRadio.checked) {
+          previousDonationDifficultyYesDetails.style.display = "block";
+        } else {
+          previousDonationDifficultyYesDetails.style.display = "none";
+        }
+      }
+      // Attach the event listeners to the radio buttons
+      var plasmaYesRadio = document.getElementById("plasmaYes");
+      var plasmaNoRadio = document.getElementById("plasmaNo");
+      plasmaYesRadio.addEventListener("change", togglePlasmaDonationTimes);
+      plasmaNoRadio.addEventListener("change", togglePlasmaDonationTimes);
+      var previousDonationDifficultyYesRadio = document.getElementById(
+        "previousDonationDifficultyYes"
+      );
+      var previousDonationDifficultyNoRadio = document.getElementById(
+        "previousDonationDifficultyNo"
+      );
+      previousDonationDifficultyYesRadio.addEventListener(
+        "change",
+        togglePreviousDonationDifficultyDetails
+      );
+      previousDonationDifficultyNoRadio.addEventListener(
+        "change",
+        togglePreviousDonationDifficultyDetails
+      );
+
+      function toggleFemaleQuestions() {
+        var genderFemaleRadio = document.getElementById("female");
+        var femaleQuestionsSection = document.getElementById("section2");
+        if (genderFemaleRadio.checked) {
+          femaleQuestionsSection.style.display = "block";
+        } else {
+          femaleQuestionsSection.style.display = "none";
+        }
+      }
+      // Attach the event listener to the gender radio buttons
+      var genderFemaleRadio = document.getElementById("female");
+      var genderMaleRadio = document.getElementById("male");
+      genderFemaleRadio.addEventListener("change", toggleFemaleQuestions);
+      genderMaleRadio.addEventListener("change", toggleFemaleQuestions);
+      // Initial execution to set visibility based on the default selected gender
+      toggleFemaleQuestions();
+
+      function toggleDonorTypeQuestions() {
+        var donorType = document.getElementById("donorType").value;
+        var voluntaryQuestionsSection = document.getElementById("voluntaryQuestions");
+        if (donorType === "voluntary") {
+          voluntaryQuestionsSection.style.display = "none";
+        } else {
+          voluntaryQuestionsSection.style.display = "block";
+        }
+      }
+      // Attach the event listener to the donor type dropdown
+      var donorTypeDropdown = document.getElementById("donorType");
+      donorTypeDropdown.addEventListener("change", toggleDonorTypeQuestions);
+      // Initial execution to set visibility based on the default selected donor type
+      toggleDonorTypeQuestions();
+
+      var communicationAddressInput = document.getElementById("communicationAddress");
+  communicationAddressInput.addEventListener("input", updatePermanentAddress);
+
+  function updatePermanentAddress() {
+    // Get the communication address value
+    var communicationAddress = communicationAddressInput.value;
+
+    // Set the permanent address value to the communication address
+    document.getElementById("permanentAddress").value = communicationAddress;
+  }
+
+      function toggleMigraineDetails() {
+        var migraineYesRadio = document.getElementById("migraineYes");
+        var migraineDetails = document.getElementById("migraineDetails");
+        if (migraineYesRadio.checked) {
+          migraineDetails.style.display = "block";
+        } else {
+          migraineDetails.style.display = "none";
+        }
+      }
+      // Attach the event listeners to the radio buttons
+      var migraineYesRadio = document.getElementById("migraineYes");
+      var migraineNoRadio = document.getElementById("migraineNo");
+      migraineYesRadio.addEventListener("change", toggleMigraineDetails);
+      migraineNoRadio.addEventListener("change", toggleMigraineDetails);
+      // For question 54
+      function toggleMedicationDetails() {
+        var medicationYesRadio = document.getElementById("medicationYes");
+        var medicationDetailsLabel = document.getElementById(
+          "medicationDetailsLabel"
+        );
+        var medicationDetails = document.getElementById("medicationDetails");
+        if (medicationYesRadio.checked) {
+          medicationDetailsLabel.style.display = "inline";
+          medicationDetails.style.display = "inline";
+        } else {
+          medicationDetailsLabel.style.display = "none";
+          medicationDetails.style.display = "none";
+        }
+      }
+      // Attach the event listeners to the radio buttons
+      var medicationYesRadio = document.getElementById("medicationYes");
+      var medicationNoRadio = document.getElementById("medicationNo");
+      medicationYesRadio.addEventListener("change", toggleMedicationDetails);
+      medicationNoRadio.addEventListener("change", toggleMedicationDetails);
+      // let currentSection = 1;
+      // const sections = document.querySelectorAll(".form-section");
+      // const progressBar = document.querySelector(".progress-bar");
+      // const prevButton = document.querySelector(".prev-button");
+      // const nextButton = document.querySelector(".next-button");
+      // prevButton.addEventListener("click", () => prevSection(currentSection - 1));
+      // nextButton.addEventListener("click", () => nextSection(currentSection + 1));
+      // function nextSection(next) {
+      //   if (next > currentSection) {
+      //     sections[currentSection - 1].classList.add("hidden");
+      //     sections[next - 1].classList.remove("hidden");
+      //     currentSection = next;
+      //     updateProgress();
+      //   }
+      // }
+      // function prevSection(prev) {
+      //   sections[currentSection - 1].classList.add("hidden");
+      //   sections[prev - 1].classList.remove("hidden");
+      //   currentSection = prev;
+      //   updateProgress();
+      // }
+      // function validateSection(section) {
+      //   // Validation logic for each section
+      //   switch (section) {
+      //     case 1:
+      //       // Validate fields in the first section
+      //       return validateSection1();
+      //     case 2:
+      //       // Validate fields in the second section
+      //       return validateSection2();
+      //     // Add more cases for other sections as needed
+      //     default:
+      //       return true;
+      //   }
+      // }
+      // function validateSection1() {
+      //   // Add your validation logic for the fields in section 1
+      //   // For example, check if required fields are filled
+      //   var requiredFields = ["name", "email", "phone", "bloodType"];
+      //   return requiredFields.every((fieldName) => {
+      //     var field = document.getElementById(fieldName);
+      //     return field.value.trim() !== ""; // Check if the field is not empty
+      //   });
+      // }
+      // function validateSection2() {
+      //   // Add your validation logic for the fields in section 2
+      //   // For example, check if required fields are filled
+      //   var requiredFields = ["field4", "field5", "field6"];
+      //   return requiredFields.every((fieldName) => {
+      //     var field = document.getElementById(fieldName);
+      //     return field.value.trim() !== ""; // Check if the field is not empty
+      //   });
+      // }
+      // function updateProgress() {
+      //   const progress = ((currentSection - 1) / (sections.length - 1)) * 100;
+      //   progressBar.style.width = `${progress}%`;
+      // }
+      function submitForm() {
+        // Prevent the default form submission
+        event.preventDefault();
+        // Get the form data
+        var formData = getFormData();
+        // Log the data (you can replace this with your desired action, e.g., sending data to a server)
+        console.log(formData);
+        alert("Form Submitted Successfully");
+        // Add your logic to submit or process the form data here
+        return false; // Prevents the form from actually submitting
+      }
+
+      function getFormData() {
+        // Collect data from form elements
+        var formData = {};
+        // Example: Add Donor Type to form data
+        formData["Donor Type"] = getDonorType();
+        // Loop through form elements and add them to formData
+        var formElements = document.getElementById("donorForm").elements;
+        for (var i = 0; i < formElements.length; i++) {
+          var element = formElements[i];
+          if (element.type !== "submit") {
+            formData[element.name] = element.value;
+          }
+        }
+        return formData;
+      }
+
+      function getDonorType() {
+        // Add your logic to determine Donor Type (e.g., based on initial value or other conditions)
+        var donorType = document.getElementById("donorType").value;
+        return donorType;
+      }
+
+      function printForm() {
+        print();
+      }
+
+      function sendEmail() {
+        Email.send({
+          Host: "smtp.elasticemail.com",
+          Username: "humbleayush30@gmail.com",
+          Password: "ACB4F48637802CC542D588F7E475192EB5DB",
+          To: "ag3872@srmist.edu.in",
+          From: "humbleayush30@gmail.com",
+          Subject: "Donor Details",
+          Body: "Name: " +
+            document.getElementById("donorName").value +
+            "<br> Age: " +
+            document.getElementById("age").value +
+            "<br> Phone No: " +
+            document.getElementById("mobileNo").value +
+            "<br> Email: " +
+            document.getElementById("email").value
+        }).then((message) => alert("Message Sent Successfully."));
+      }
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbxz-ux9IJyXjdyrdjFnU9yMhH_pEuTl6Ca7uFL00sUt7Ph0yYp02oj8hvrndODiBka1dg/exec";
+      const form = document.forms["submit-to-google-sheet"];
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, {
+            method: "POST",
+            body: new FormData(form)
+          })
+          .then((response) => console.log("Success!", response))
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
+
+</body>
+
+</html>
